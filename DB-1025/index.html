@@ -68,6 +68,22 @@ h1{font-weight:300;font-size:clamp(38px,10vw,54px);line-height:1.15;margin:0;tex
 .copy{font:inherit;font-size:12px;background:none;border:1px solid var(--line);color:var(--ink);padding:6px 14px;border-radius:2px;cursor:pointer}
 .copy:focus-visible{outline:1px solid var(--sand);outline-offset:2px}
 .demo{font-size:12px;text-align:center;color:var(--sand);border:1px dashed var(--line);padding:6px}
+
+/* current-stage spotlight */
+section:has(.prog){background:var(--sand-fill);color:var(--on-sand);padding:24px 22px 26px}
+section:has(.prog) .pct{color:var(--on-sand)}
+section:has(.prog) .cur small{color:#3E3930}
+section:has(.prog) .cur b{font-weight:500;font-size:20px}
+section:has(.prog) .bar{background:rgba(16,16,15,.14)}
+section:has(.prog) .bar i{background:var(--on-sand)}
+.st .no{color:#A39A8A}
+.st.done .no{color:var(--sand)}
+.st.now{background:var(--raised);margin-inline:-12px;padding-inline:12px;border-bottom-color:transparent}
+.st.now .no,.st.now .nm{color:var(--ink)}
+.st.now .nm{font-weight:500}
+.st.now .tag{border-color:var(--ink);color:var(--ink)}
+.st.done .dt::before{color:var(--sand)}
+.wa{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;padding:10px 18px;border-radius:2px;font-weight:400}
 </style>
 </head>
 <body>
@@ -146,13 +162,13 @@ ${ORDER.ask
 </section>
 <footer class="foot">
   <div class="rule" style="width:80px"></div>
-  <span>لأي استفسار تواصل معنا واتساب</span>
-  <span class="ph" id="ph">${esc(CONTACT)}</span>
-  <button class="copy" id="cp" type="button">نسخ الرقم</button>
+  ${CONTACT.includes("X")?"":"<span>لأي استفسار تواصل معنا واتساب</span>"}
+  ${CONTACT.includes("X")?"":`<span class="ph" id="ph">${esc(CONTACT)}</span>
+  <button class="copy" id="cp" type="button">نسخ الرقم</button>`}
   <span>نصمّم. نصنع. نسلّم. · المدينة المنورة</span>
 </footer>`;
 
-document.getElementById("cp").addEventListener("click",async e=>{
+document.getElementById("cp")?.addEventListener("click",async e=>{
   try{await navigator.clipboard.writeText(CONTACT);e.target.textContent="تم النسخ"}
   catch{const r=document.createRange();r.selectNodeContents(document.getElementById("ph"));const s=getSelection();s.removeAllRanges();s.addRange(r)}
 });
