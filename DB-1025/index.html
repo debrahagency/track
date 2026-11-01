@@ -88,6 +88,9 @@ section:has(.prog) .bar i{background:var(--on-sand)}
 .pct{font-weight:300;letter-spacing:-.01em}
 .fact .n{font-size:26px;letter-spacing:.04em}
 .st .no{font-size:18px;letter-spacing:.08em}
+.foot .tl{font-size:15px;color:var(--ink);letter-spacing:.04em}
+.foot .ct{font-family:var(--lat);font-size:14px;letter-spacing:.06em;color:var(--ink);text-decoration:none;font-variant-numeric:lining-nums}
+.foot .ct:hover{color:var(--sand)}
 </style>
 </head>
 <body>
@@ -166,10 +169,9 @@ ${ORDER.ask
 </section>
 <footer class="foot">
   <div class="rule" style="width:80px"></div>
-  ${CONTACT.includes("X")?"":"<span>لأي استفسار تواصل معنا واتساب</span>"}
-  ${CONTACT.includes("X")?"":`<span class="ph" id="ph">${esc(CONTACT)}</span>
-  <button class="copy" id="cp" type="button">نسخ الرقم</button>`}
-  <span>نصمّم. نصنع. نسلّم. · المدينة المنورة</span>
+  <span class="tl">نصمّم · نصنع · نسلّم</span>
+  <a class="ct" href="tel:+966573790075" dir="ltr">057 379 0075</a>
+  <a class="ct" href="mailto:debrahagency@gmail.com" dir="ltr">debrahagency@gmail.com</a>
 </footer>`;
 
 document.getElementById("cp")?.addEventListener("click",async e=>{
