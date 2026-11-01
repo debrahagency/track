@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>طلب ماجد الطريقي — نارا</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500&family=Jost:wght@300;400&family=Cormorant+Garamond:wght@300;400&display=swap">
+<style>
+/* layout: one quiet column like a tailor's work ticket — noir ground, thin rules, sand accents (Debrah identity) */
+:root{
+  --bg:#F1EEE9; --raised:#E5E0D7; --line:#D3CCBF; --ink:#10100F; --muted:#5E584E;
+  --sand:#746C5D; --sand-deep:#5C5548; --sand-fill:#C8B899; --on-sand:#10100F;
+  --ar:"IBM Plex Sans Arabic","Noto Kufi Arabic",system-ui,sans-serif;
+  --lat:"Jost","Futura","Century Gothic",sans-serif;
+  --num:"Cormorant Garamond","Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ar);font-weight:300;font-size:16px;line-height:1.75;direction:rtl;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.logo{height:72px;width:auto;display:block;filter:brightness(0) saturate(0)}
+.eyebrow{font-family:var(--lat);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--sand);direction:ltr}
+.eyebrow{display:block;margin-bottom:10px}
+.rule{height:1px;background:var(--line)}
+h1{font-weight:300;font-size:clamp(38px,10vw,54px);line-height:1.15;margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:10px 0 0}
+.prog{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.pct{font-family:var(--num);font-weight:300;font-size:72px;line-height:1;color:var(--sand)}
+.cur{text-align:left}
+.cur small{display:block;font-size:12px;color:var(--muted)}
+.cur b{font-weight:400;font-size:18px}
+.bar{height:3px;background:var(--raised);margin-top:18px}
+.bar i{display:block;height:3px;background:var(--sand-fill)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+.fact{padding:18px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px;min-width:0}
+.fact:nth-child(odd){padding-left:16px;border-left:1px solid var(--line)}
+.fact:nth-child(even){padding-right:16px}
+.fact small{font-size:12px;color:var(--muted)}
+.fact b{font-weight:400;font-size:18px}
+.fact .n{font-family:var(--num);font-size:30px;line-height:1.1;color:var(--sand);direction:ltr;text-align:right}
+.ask{padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.ask.ok{background:var(--raised);border:1px solid var(--line)}
+.ask.ok .m{background:var(--sand-fill)}
+.ask.need{background:var(--sand-fill);color:var(--on-sand)}
+.ask .m{width:8px;height:8px;margin-top:10px;flex-shrink:0;background:var(--sand)}
+.ask.need .m{background:var(--on-sand)}
+.ask b{display:block;font-weight:500}
+.ask p{margin:0;font-size:14px;opacity:1}
+.ask.ok p{color:var(--muted)}
+.stages{list-style:none;margin:0;padding:0}
+.st{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.st .no{font-family:var(--num);font-size:24px;line-height:1;color:var(--line)}
+.st.done .no{color:var(--sand-deep)}
+.st.now .no{color:var(--sand)}
+.st .nm{font-weight:400}
+.st.next .nm{color:var(--muted);font-weight:300}
+.st .nt{display:block;font-size:13px;color:var(--muted)}
+.st .dt{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.st.done .dt::before{content:"✓  ";color:var(--sand)}
+.st.now{position:relative}
+.st.now .nm{color:var(--sand)}
+.tag{font-family:var(--lat);font-size:10px;letter-spacing:.24em;text-transform:uppercase;border:1px solid var(--sand);color:var(--sand);padding:3px 8px;direction:ltr}
+.foot{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;font-size:13px;color:var(--muted)}
+.ph{direction:ltr;unicode-bidi:embed;user-select:all;color:var(--ink);font-family:var(--lat);letter-spacing:.06em}
+.copy{font:inherit;font-size:12px;background:none;border:1px solid var(--line);color:var(--ink);padding:6px 14px;border-radius:2px;cursor:pointer}
+.copy:focus-visible{outline:1px solid var(--sand);outline-offset:2px}
+.demo{font-size:12px;text-align:center;color:var(--sand);border:1px dashed var(--line);padding:6px}
+
+/* current-stage spotlight */
+section:has(.prog){background:var(--sand-fill);color:var(--on-sand);padding:24px 22px 26px}
+section:has(.prog) .pct{color:var(--on-sand)}
+section:has(.prog) .cur small{color:#3E3930}
+section:has(.prog) .cur b{font-weight:500;font-size:20px}
+section:has(.prog) .bar{background:rgba(16,16,15,.14)}
+section:has(.prog) .bar i{background:var(--on-sand)}
+.st .no{color:#A39A8A}
+.st.done .no{color:var(--sand)}
+.st.now{background:var(--raised);margin-inline:-12px;padding-inline:12px;border-bottom-color:transparent}
+.st.now .no,.st.now .nm{color:var(--ink)}
+.st.now .nm{font-weight:500}
+.st.now .tag{border-color:var(--ink);color:var(--ink)}
+.st.done .dt::before{color:var(--sand)}
+.wa{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;padding:10px 18px;border-radius:2px;font-weight:400}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ===== بيانات الطلب — هذا الجزء الوحيد اللي يتغيّر ===== */
+const ORDER = {
+  demo: false,
+  id: "DB-1026",
+  client: "ماجد الطريقي",
+  item: "طلبية نارا",
+  pieces: 240,
+  delivery: "يُحدَّد قريباً",
+  updated: "1 نوفمبر 2026",
+  ask: null,
+  stages: [
+    {name:"التحويل", status:"done"},
+    {name:"العينة", status:"done"},
+    {name:"التصنيع", status:"now", note:"طلبيتك الحين في خط الإنتاج"},
+    {name:"الجودة", status:"next"},
+    {name:"الشحن", status:"next"},
+    {name:"الوصول", status:"next"},
+    {name:"تم التسليم", status:"next"}
+  ]
+};
+const CONTACT = "+966 5X XXX XXXX";
+/* ======================================================= */
+
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const total=ORDER.stages.length, done=ORDER.stages.filter(s=>s.status==="done").length;
+const now=ORDER.stages.find(s=>s.status==="now");
+const pct=Math.round(((done+(now?0.5:0))/total)*100);
+const delivered=done===total;
+
+document.getElementById("app").innerHTML=`
+${ORDER.demo?'<div class="demo">طلب تجريبي — للمعاينة فقط</div>':''}
+<header class="top">
+  <img class="logo" src="data:image/png;base64,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" alt="وكالة دبرة DEBRAH AGENCY">
+  <span class="eyebrow" style="margin:0">Order #${esc(ORDER.id)}</span>
+</header>
+<section>
+  <span class="eyebrow">Order Tracking</span>
+  <h1>تابع طلبك يا ${esc(ORDER.client.split(" ")[0])}</h1>
+  <p class="lead">آخر تحديث ${esc(ORDER.updated)}</p>
+</section>
+<section>
+  <div class="prog">
+    <span class="pct">${pct}%</span>
+    <div class="cur"><small>${delivered?"الحالة":"المرحلة الحالية"}</small><b>${delivered?"تم التسليم":esc(now?now.name:"")}</b></div>
+  </div>
+  <div class="bar" role="progressbar" aria-label="نسبة الإنجاز" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>
+</section>
+<section class="facts">
+  <div class="fact"><small>المنتج</small><b>${esc(ORDER.item)}</b></div>
+  <div class="fact"><small>عدد القطع</small><span class="n">${ORDER.pieces}</span></div>
+  <div class="fact"><small>رقم الطلب</small><span class="n">${esc(ORDER.id)}</span></div>
+  <div class="fact"><small>التسليم المتوقع</small><b>${esc(ORDER.delivery)}</b></div>
+</section>
+${ORDER.ask
+ ?`<div class="ask need"><span class="m"></span><div><b>${esc(ORDER.ask.title)}</b><p>${esc(ORDER.ask.text)}</p></div></div>`
+ :`<div class="ask ok"><span class="m"></span><div><b>ما نحتاج منك شي حالياً</b><p>طلبك بين أيادٍ أمينة، ونحدّث الصفحة مع كل مرحلة.</p></div></div>`}
+<section>
+  <span class="eyebrow">Production</span>
+  <ol class="stages">
+  ${ORDER.stages.map((s,i)=>`<li class="st ${s.status}">
+     <span class="no">${pad(i+1)}</span>
+     <div><span class="nm">${esc(s.name)}</span>${s.note?`<span class="nt">${esc(s.note)}</span>`:""}</div>
+     ${s.status==="now"?'<span class="tag">Now</span>':`<span class="dt">${s.status==="done"?esc(s.date||""):""}</span>`}
+   </li>`).join("")}
+  </ol>
+</section>
+<footer class="foot">
+  <div class="rule" style="width:80px"></div>
+  ${CONTACT.includes("X")?"":"<span>لأي استفسار تواصل معنا واتساب</span>"}
+  ${CONTACT.includes("X")?"":`<span class="ph" id="ph">${esc(CONTACT)}</span>
+  <button class="copy" id="cp" type="button">نسخ الرقم</button>`}
+  <span>نصمّم. نصنع. نسلّم. · المدينة المنورة</span>
+</footer>`;
+
+document.getElementById("cp")?.addEventListener("click",async e=>{
+  try{await navigator.clipboard.writeText(CONTACT);e.target.textContent="تم النسخ"}
+  catch{const r=document.createRange();r.selectNodeContents(document.getElementById("ph"));const s=getSelection();s.removeAllRanges();s.addRange(r)}
+});
+</script>
+</body>
+</html>
