@@ -112,13 +112,13 @@ const ORDER = {
   updated: "1 نوفمبر 2026",
   ask: null,
   stages: [
-    {name:"التحويل", status:"done"},
-    {name:"العينة", status:"done"},
-    {name:"التصنيع", status:"now", note:"طلبيتك الحين في خط الإنتاج"},
-    {name:"الجودة", status:"next"},
-    {name:"الشحن", status:"next"},
-    {name:"الوصول", status:"next"},
-    {name:"تم التسليم", status:"next"}
+    {name:"تأكيد الطلب", status:"done", desc:"استلمنا تحويلك، وطلبك صار رسمياً في جدولنا."},
+    {name:"العينة", status:"done", desc:"نجهّز قطعة أولى عشان تتأكد من كل تفصيلة قبل الكمية."},
+    {name:"التصنيع", status:"now", desc:"طلبك الحين في خط الإنتاج، من القص لين الخياطة."},
+    {name:"فحص الجودة", status:"next", desc:"نراجع كل قطعة بيدنا، المقاسات والتطريز والخياطة."},
+    {name:"الشحن", status:"next", desc:"طلبك تغلّف وطلع في طريقه لك."},
+    {name:"الوصول", status:"next", desc:"وصل طلبك مدينتك، وقريب يكون عندك."},
+    {name:"تم التسليم", status:"next", desc:"وصلك طلبك، نتمنى يعجبك."}
   ]
 };
 const CONTACT = "+966 5X XXX XXXX";
@@ -163,7 +163,7 @@ ${ORDER.ask
   <ol class="stages">
   ${ORDER.stages.map((s,i)=>`<li class="st ${s.status}">
      <span class="no">${pad(i+1)}</span>
-     <div><span class="nm">${esc(s.name)}</span>${s.note?`<span class="nt">${esc(s.note)}</span>`:""}</div>
+     <div><span class="nm">${esc(s.name)}</span>${s.status==="now"&&(s.note||s.desc)?`<span class="nt">${esc(s.note||s.desc)}</span>`:""}</div>
      ${s.status==="now"?'<span class="tag">Now</span>':`<span class="dt">${s.status==="done"?esc(s.date||""):""}</span>`}
    </li>`).join("")}
   </ol>
