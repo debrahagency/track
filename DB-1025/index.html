@@ -13,7 +13,7 @@
   --sand:#746C5D; --sand-deep:#5C5548; --sand-fill:#C8B899; --on-sand:#10100F;
   --ar:"IBM Plex Sans Arabic","Noto Kufi Arabic",system-ui,sans-serif;
   --lat:"Jost","Futura","Century Gothic",sans-serif;
-  --num:"Cormorant Garamond","Times New Roman",serif;
+  --num:"Jost","Century Gothic",sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -84,6 +84,10 @@ section:has(.prog) .bar i{background:var(--on-sand)}
 .st.now .tag{border-color:var(--ink);color:var(--ink)}
 .st.done .dt::before{color:var(--sand)}
 .wa{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;padding:10px 18px;border-radius:2px;font-weight:400}
+.pct,.fact .n,.st .no{font-variant-numeric:lining-nums tabular-nums}
+.pct{font-weight:300;letter-spacing:-.01em}
+.fact .n{font-size:26px;letter-spacing:.04em}
+.st .no{font-size:18px;letter-spacing:.08em}
 </style>
 </head>
 <body>
