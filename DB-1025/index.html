@@ -108,20 +108,17 @@ const ORDER = {
   client: "يوسف الخلف",
   item: "سويت شيرت عودي",
   pieces: 50,
-  delivery: "يُحدَّد بعد بدء التصنيع",
-  updated: "30 أكتوبر 2026",
+  delivery: "يُحدَّد قريباً",
+  updated: "1 نوفمبر 2026",
   ask: null,
   stages: [
-    {name:"تأكيد الطلب واستلام التحويل", status:"done", date:"30 أكتوبر"},
-    {name:"اعتماد العينة", status:"done", date:"30 أكتوبر"},
-    {name:"التجهيز للتصنيع", status:"now", note:"يبدأ التصنيع يوم السبت 31 أكتوبر"},
-    {name:"قص القماش", status:"next"},
-    {name:"التطريز من الأمام والخلف", status:"next"},
-    {name:"الخياطة والتجميع", status:"next"},
-    {name:"فحص الجودة", status:"next"},
-    {name:"الكي والتغليف", status:"next"},
-    {name:"الشحن", status:"next"},
-    {name:"التسليم", status:"next"}
+    {name:"تأكيد الطلب", status:"done", desc:"استلمنا تحويلك، وطلبك صار رسمياً في جدولنا.", date:"30 أكتوبر"},
+    {name:"العينة", status:"done", desc:"نجهّز قطعة أولى عشان تتأكد من كل تفصيلة قبل الكمية.", date:"30 أكتوبر"},
+    {name:"التصنيع", status:"now", desc:"طلبك الحين في خط الإنتاج، من القص لين الخياطة."},
+    {name:"فحص الجودة", status:"next", desc:"نراجع كل قطعة بيدنا، المقاسات والتطريز والخياطة."},
+    {name:"الشحن", status:"next", desc:"طلبك تغلّف وطلع في طريقه لك."},
+    {name:"الوصول", status:"next", desc:"وصل طلبك مدينتك، وقريب يكون عندك."},
+    {name:"تم التسليم", status:"next", desc:"وصلك طلبك، نتمنى يعجبك."}
   ]
 };
 const CONTACT = "+966 5X XXX XXXX";
@@ -166,7 +163,7 @@ ${ORDER.ask
   <ol class="stages">
   ${ORDER.stages.map((s,i)=>`<li class="st ${s.status}">
      <span class="no">${pad(i+1)}</span>
-     <div><span class="nm">${esc(s.name)}</span>${s.note?`<span class="nt">${esc(s.note)}</span>`:""}</div>
+     <div><span class="nm">${esc(s.name)}</span>${s.status==="now"&&(s.note||s.desc)?`<span class="nt">${esc(s.note||s.desc)}</span>`:""}</div>
      ${s.status==="now"?'<span class="tag">Now</span>':`<span class="dt">${s.status==="done"?esc(s.date||""):""}</span>`}
    </li>`).join("")}
   </ol>
