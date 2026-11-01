@@ -89,8 +89,12 @@ section:has(.prog) .bar i{background:var(--on-sand)}
 .fact .n{font-size:26px;letter-spacing:.04em}
 .st .no{font-size:18px;letter-spacing:.08em}
 .foot .tl{font-size:15px;color:var(--ink);letter-spacing:.04em}
-.foot .ct{font-family:var(--lat);font-size:14px;letter-spacing:.06em;color:var(--ink);text-decoration:none;font-variant-numeric:lining-nums}
-.foot .ct:hover{color:var(--sand)}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.sh span{font-size:15px;font-weight:500}
+.sh i{font-style:normal;font-family:var(--lat);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--sand)}
+.ct{text-decoration:none;color:inherit}
+.ct .cv{font-family:var(--lat);font-size:16px;letter-spacing:.04em;color:var(--ink);text-align:right;overflow-wrap:anywhere;font-variant-numeric:lining-nums}
+.ct:hover .cv{color:var(--sand)}
 </style>
 </head>
 <body>
@@ -167,11 +171,16 @@ ${ORDER.ask
    </li>`).join("")}
   </ol>
 </section>
+<section>
+  <div class="sh"><span>للتواصل</span><i>Contact</i></div>
+  <div class="facts">
+    <a class="fact ct" href="tel:+966573790075"><small>الجوال</small><span class="cv" dir="ltr">057 379 0075</span></a>
+    <a class="fact ct" href="mailto:debrahagency@gmail.com"><small>البريد الإلكتروني</small><span class="cv" dir="ltr">debrahagency@gmail.com</span></a>
+  </div>
+</section>
 <footer class="foot">
   <div class="rule" style="width:80px"></div>
   <span class="tl">نصمّم · نصنع · نسلّم</span>
-  <a class="ct" href="tel:+966573790075" dir="ltr">057 379 0075</a>
-  <a class="ct" href="mailto:debrahagency@gmail.com" dir="ltr">debrahagency@gmail.com</a>
 </footer>`;
 
 document.getElementById("cp")?.addEventListener("click",async e=>{
