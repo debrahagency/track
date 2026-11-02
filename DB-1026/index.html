@@ -95,6 +95,13 @@ section:has(.prog) .bar i{background:var(--on-sand)}
 .ct{text-decoration:none;color:inherit}
 .ct .cv{font-family:var(--lat);font-size:16px;letter-spacing:.04em;color:var(--ink);text-align:right;overflow-wrap:anywhere;font-variant-numeric:lining-nums}
 .ct:hover .cv{color:var(--sand)}
+.empty{border:1px dashed var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:14px}
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.gal figure{margin:0;position:relative;aspect-ratio:4/5;background:var(--raised);overflow:hidden}
+.gal figure:first-child:nth-last-child(odd){grid-column:1/-1;aspect-ratio:4/3}
+.gal a{display:block;height:100%}
+.gal img,.gal video{width:100%;height:100%;object-fit:cover;display:block;background:var(--raised)}
+.gal figcaption{position:absolute;bottom:0;right:0;left:0;padding:22px 12px 9px;font-size:12px;color:#F1EEE9;background:linear-gradient(transparent,rgba(16,16,15,.65));pointer-events:none}
 </style>
 </head>
 <body>
@@ -169,6 +176,10 @@ ${ORDER.ask
   </ol>
 </section>
 <section>
+  <div class="sh"><span>صور وفيديوهات الطلبية</span><i>Gallery</i></div>
+  <div id="gal" class="empty">بنشاركك هنا صور وفيديوهات من مراحل تصنيع طلبك، أول بأول.</div>
+</section>
+<section>
   <div class="sh"><span>للتواصل</span><i>Contact</i></div>
   <div class="facts">
     <a class="fact ct" href="tel:+966573790075"><small>الجوال</small><span class="cv" dir="ltr">057 379 0075</span></a>
@@ -184,6 +195,7 @@ document.getElementById("cp")?.addEventListener("click",async e=>{
   try{await navigator.clipboard.writeText(CONTACT);e.target.textContent="تم النسخ"}
   catch{const r=document.createRange();r.selectNodeContents(document.getElementById("ph"));const s=getSelection();s.removeAllRanges();s.addRange(r)}
 });
+(function(){var box=document.getElementById("gal");if(!box)return;fetch("https://api.github.com/repos/debrahagency/track/contents/"+ORDER.id+"/media?ref=main").then(function(r){return r.ok?r.json():[]}).then(function(L){L=(Array.isArray(L)?L:[]).filter(function(f){return /\.(jpe?g|png|webp|gif|mp4|mov|webm)$/i.test(f.name)}).sort(function(a,b){return a.name.localeCompare(b.name,"ar",{numeric:true})});if(!L.length)return;box.className="gal";box.innerHTML=L.map(function(f){var u="media/"+encodeURIComponent(f.name);var cap=f.name.replace(/\.[^.]+$/,"").replace(/[-_ ]*\d+$/,"").replace(/[-_]+/g," ").trim();var c=/[\u0600-\u06FF]/.test(cap)?"<figcaption>"+esc(cap)+"</figcaption>":"";if(/\.(mp4|mov|webm)$/i.test(f.name))return "<figure><video src=\""+u+"#t=0.1\" controls playsinline preload=\"metadata\"></video>"+c+"</figure>";return "<figure><a href=\""+u+"\" target=\"_blank\" rel=\"noopener\"><img src=\""+u+"\" alt=\""+esc(cap||"صورة من الطلبية")+"\" loading=\"lazy\"></a>"+c+"</figure>"}).join("")}).catch(function(){})})();
 </script>
 </body>
 </html>
