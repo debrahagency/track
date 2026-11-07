@@ -115,6 +115,7 @@ const ORDER = {
   client: "لمى الخلف",
   item: "هودي ROW",
   pieces: 400,
+  progress: 44,
   delivery: "يُحدَّد قريباً",
   updated: "7 نوفمبر 2026",
   ask: null,
@@ -135,7 +136,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const pad=n=>String(n).padStart(2,"0");
 const total=ORDER.stages.length, done=ORDER.stages.filter(s=>s.status==="done").length;
 const now=ORDER.stages.find(s=>s.status==="now");
-const pct=Math.round(((done+(now?0.5:0))/total)*100);
+const pct=ORDER.progress!=null?ORDER.progress:Math.round(((done+(now?0.5:0))/total)*100);
 const delivered=done===total;
 
 document.getElementById("app").innerHTML=`
