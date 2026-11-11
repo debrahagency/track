@@ -115,13 +115,14 @@ const ORDER = {
   client: "يوسف الخلف",
   item: "سويت شيرت عودي",
   pieces: 50,
+  progress: 51,
   delivery: "يُحدَّد قريباً",
-  updated: "1 نوفمبر 2026",
+  updated: "11 نوفمبر 2026",
   ask: null,
   stages: [
     {name:"تأكيد الطلب", status:"done", desc:"استلمنا تحويلك، وطلبك صار رسمياً في جدولنا.", date:"30 أكتوبر"},
     {name:"العينة", status:"done", desc:"نجهّز قطعة أولى عشان تتأكد من كل تفصيلة قبل الكمية.", date:"30 أكتوبر"},
-    {name:"التصنيع", status:"now", desc:"طلبك الحين في خط الإنتاج، من القص لين الخياطة."},
+    {name:"التصنيع", status:"now", note:"خلّصنا القص، وطلبك الحين في مرحلة التطريز.", desc:"طلبك الحين في خط الإنتاج، من القص لين الخياطة."},
     {name:"فحص الجودة", status:"next", desc:"نراجع كل قطعة بيدنا، المقاسات والتطريز والخياطة."},
     {name:"الشحن", status:"next", desc:"طلبك تغلّف وطلع في طريقه لك."},
     {name:"الوصول", status:"next", desc:"وصل طلبك مدينتك، وقريب يكون عندك."},
@@ -135,7 +136,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const pad=n=>String(n).padStart(2,"0");
 const total=ORDER.stages.length, done=ORDER.stages.filter(s=>s.status==="done").length;
 const now=ORDER.stages.find(s=>s.status==="now");
-const pct=Math.round(((done+(now?0.5:0))/total)*100);
+const pct=ORDER.progress!=null?ORDER.progress:Math.round(((done+(now?0.5:0))/total)*100);
 const delivered=done===total;
 
 document.getElementById("app").innerHTML=`
